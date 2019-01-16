@@ -48,8 +48,76 @@ Decompilation DEX files, decompilation SO files, stealing core technologies, ste
 
 
 ## Documentation
-You can find the KiwiApkProtect documentation [on the website](https://document.kiwisec.com/en/kiwiVM).  
+You can find the KiwiApkProtect documentation [on the website](https://document.kiwisec.com/en/kiwiApkEncrypt/offline-tool.html).  
 
+#### Obtain
+After purchasing the KiwiApkEncrypt, the key of the computer to be bound is extracted by the machine code generation tool provided by the Kiwisec. The Kiwisec will generate the corresponding KiwiApkEncrypt according to the Key, authorization time, authorized package name and enterprise information.
+
+#### Install:
+*  **At windows**
+
+>Reliance on tools:Ubuntu.  
+>System:Must be Windows 10 version 16215.0 or later  
+>Processor architecture:X64
+
+Configuration steps：
+1. Enter the [Microsoft Store](https://aka.ms/wslstore).
+
+2. Select and install Ubuntu, pay attention to system requirements.
+
+3. Start Ubuntu directly or from the start menu and go to the command line window
+
+4. Set UNIX user and password (default user name, can be switched to root via sudo su)
+
+5. Execute: ```sudo dpkg --add-architecture i386``` add 32bit library support
+
+6. Execute: `sudo apt update` update the source
+
+7. Execute: `sudo apt install qemu-user-static openjdk-8-jre-headless python unzip lib32ncurses5-dev` Install dependent libraries
+
+8. Execute `sudo update-binfmts --install i386 /usr/bin/qemu-i386-static --magic '\x7fELF\x01\x01\x01\x03\x00\x00\x00\x00\x00\x00\x00\x00\x03\x00\x03\x00\x01\x00\x00\x00' --mask '\xff\xff\xff\xff\xff\xff\xff\xfc\xff\xff\xff\xff\xff\xff\xff\xff\xf8\xff\xff\xff\xff\xff\xff\xff'`
+
+9. Open the DOS command line and execute `ubuntu config --default-user root`，Switching the default user to root is especially important because the compiler cannot run otherwise
+
+10. Unpack the android-ndk-r10e，unzip is recommended，Avoid affecting file permissions。Android NDK download address：https://github.com/android-ndk/ndk/wiki
+
+11. install java8
+
+* **MacOS and Linux** Install java8 and android-ndk-r10e.
+
+#### Directions for use
+
+1. After decompression tool kit, click on the directory ` KiwiSecEncrypt ` executable file to start tool, the following figure
+
+ ![1-1](./image/pc1.jpg "Android Application Encryption Tool")
+
+2. The Windows version must specify the Android NDK path,  click the Settings button at the top as shown below
+
+ ![1-2](./image/pc0.jpg "NDK path")
+
+3. After selecting the APK file that needs to be encrypted, click the start encryption button to enter the pre-compilation stage. The following figure
+
+ ![1-3](./image/pc2.jpg "Precompile")
+
+4. Pre-compilation mainly analyzes DEX files to extract Java functions that can be converted into C. [the analysis stage takes several minutes, please wait patiently], as shown in the figure below
+
+ ![1-4](./image/pc3.jpg "Precompile")
+
+5. After the pre-compilation, according to the project situation, you can customize according to the project requirements, check the core code function, Java2C conversion. Memory protection, anti-debugging, anti-secondary packaging function default integration, temporarily can not be customized check, as shown in the figure below
+ ![1-5](./image/pc4.jpg "check func")
+
+6. After the custom check is completed, click  *Encrypt Now* . The encryption process takes several minutes. Please wait patiently. If this fails, troubleshoot the error log or send the log file to the technical support staff.
+ ![1-6](./image/pc6.jpg "In the encryption")
+
+7. After encryption, click *Open Dir*  button to open the encrypted file location. The encrypted file name format is **.kws.apk**. If you need to modify the export directory, enter the Settings page.
+
+ ![1-7](./image/pc7.jpg "complete")
+
+8. To sign the encrypted apk file, you must use the same signature file as before the encryption, otherwise it will be regarded as piracy and cannot operate normally. It is suggested to check V2 version, which is more secure.
+
+9. After signing, you can install, run and use it.
+
+10. In case of any problem, please contact our customer service or technical support
 
 
 ## Introduce
